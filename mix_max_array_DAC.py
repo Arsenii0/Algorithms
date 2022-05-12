@@ -15,11 +15,11 @@ max_elem = None
 
 
 def find_min_max(array, start_index, end_index):
-    size = end_index - start_index
+    distance = end_index - start_index
 
-    if size == 0:
+    if distance == 0:
         return Result(array[start_index], array[start_index])
-    elif size == 1:
+    elif distance == 1:
         if array[start_index] > array[end_index]:
             return Result(array[end_index], array[start_index])
         else:
