@@ -11,47 +11,55 @@ import math
 # 2. Modifies arr[] in-place such that it is sorted from position l to position r
 def merge(arr, left, mid, right):
 
-    arr_left = arr[left : mid + 1]
-    arr_right = arr[mid + 1 : right + 1]
+    left_subarr = arr[left : mid + 1]  # mid + 1 in order to include mid
+    right_subarr = arr[mid + 1 : right + 1]
 
-    left_iter = 0
-    right_iter = 0
+    left_subarr_iter = 0
+    right_subarr_iter = 0
 
-    distance = right - left
+    arr_iter = left
 
-    while left_iter <= mid and right_iter <= right:
-        if arr_left[left_iter] > arr_right[right_iter]:
-            arr[left + left_iter] = arr_right[right_iter]
-            right_iter += 1
+    while left_subarr_iter < len(left_subarr) and right_subarr_iter < len(right_subarr):
+        if left_subarr[left_subarr_iter] > right_subarr[right_subarr_iter]:
+            arr[arr_iter] = right_subarr[right_subarr_iter]
+            right_subarr_iter += 1
         else:
-            left_iter += 1
+            arr[arr_iter] = left_subarr[left_subarr_iter]
+            left_subarr_iter += 1
 
-    while left_iter <= distance:
-        arr[left_iter] = arr_right[left_iter]
-        left_iter += 1
+        arr_iter += 1
 
-    while right_iter <= distance:
-        arr[right_iter] = arr_right[right_iter]
-        right_iter += 1
+    while left_subarr_iter < len(left_subarr):
+        arr[arr_iter] = left_subarr[left_subarr_iter]
+        left_subarr_iter += 1
+        arr_iter += 1
+
+    while right_subarr_iter < len(right_subarr):
+        arr[arr_iter] = right_subarr[right_subarr_iter]
+        right_subarr_iter += 1
+        arr_iter += 1
 
 
 def mergeSort(arr, left, right):
-    pass
+    distance = right - left
 
+    if distance == 0:
+        return  # because 1 element array is already sorted
+    elif distance == 1:
+        if arr[left] > arr[right]:
+            arr[left], arr[right] = arr[right], arr[left]
 
-# test merge
-arr = [7, 8, 9, 11, 3, 6, 10]
+    else:
+        mid = left + math.floor((right - left) / 2)
+        mergeSort(arr, left, mid)
+        mergeSort(arr, mid + 1, right)
 
-start_index = 0
-end_index = len(arr) - 1
-merge(arr, start_index, math.floor(end_index / 2), end_index)
-
-print(arr)
+        merge(arr, left, mid, right)
 
 
 # full test
 
-# arr = [4, 1, 3, 9, 7]
-# mergeSort(arr, 0, len(arr) - 1)
+arr = [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]
+mergeSort(arr, 0, len(arr) - 1)
 
-# print(arr)
+print(arr)
