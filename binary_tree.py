@@ -8,25 +8,6 @@ class Node:
 def isBST(root, l=None, r=None):
     pass
 
-    # # Base condition
-    # if root == None:
-    #     return True
-
-    # # if left node exist then check it has
-    # # correct data or not i.e. left node's data
-    # # should be less than root's data
-    # if l != None and root.data <= l.data:
-    #     return False
-
-    # # if right node exist then check it has
-    # # correct data or not i.e. right node's data
-    # # should be greater than root's data
-    # if r != None and root.data >= r.data:
-    #     return False
-
-    # # check recursively for every node.
-    # return isBST(root.left, l, root) and isBST(root.right, root, r)
-
 
 class Tree:
     def __init__(self, root):
