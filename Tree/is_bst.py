@@ -28,39 +28,6 @@ def is_bst(root):
         return False
     
     return True
-    
-    
-# NOT CORRECT APPROACH BELOW!
-
-# duplicates in binary search tree are not allowed
-# def is_bst(root):
-#     if root == None:
-#         return False
-    
-#     left_subtree_bst = True
-#     right_subtree_bst = True
-    
-#     if root.left != None:
-#         if root.data <= root.left.data:
-#             return False
-#         else:
-#             left_subtree_bst = is_bst(root.left)
-    
-#     if root.right != None:
-#         if root.data >= root.right.data:
-#             return False
-#         else:
-#             right_subtree_bst = is_bst(root.right)
-    
-#     return left_subtree_bst and right_subtree_bst
-    
-
-# Not BST
-# root = Node(5)
-# root.left = Node(4)
-# root.right = Node(6)
-# root.right.left = Node(3)
-# root.right.right = Node(7)
 
 # Is BST
 root = Node(4)

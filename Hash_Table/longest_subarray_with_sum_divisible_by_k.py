@@ -50,41 +50,8 @@ def test_longestSubarraySumDivisibleByK():
 
     print(longestSubarraySumDivisibleByK(array, K))
 
-
-def subarraysWithExpectedSum(arr, n, Sum):
-    sum_to_array_index_map = {}
-
-    result = 0
-
-    sum_i = 0
-    current_index = 0
-    while current_index < len(arr):
-        sum_i += arr[current_index]
-        sum_to_array_index_map[current_index] = sum_i
-
-        hash_map_index = 0
-        while hash_map_index < current_index:
-            if sum_i - sum_to_array_index_map[hash_map_index] == Sum:
-                result += 1
-
-            hash_map_index += 1
-
-        if sum_to_array_index_map[current_index] == Sum:
-            result += 1
-
-        current_index += 1
-
-    return result
-
-
-def test_subarraysWithExpectedSum():
-    arr = [10, 2, -2, -20, 10]
-    sum = -10
-    print(subarraysWithExpectedSum(arr, len(arr), sum))
-
-
 def main():
-    test_subarraysWithExpectedSum()
+    test_longestSubarraySumDivisibleByK()
 
 
 if __name__ == "__main__":
