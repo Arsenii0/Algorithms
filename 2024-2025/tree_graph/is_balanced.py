@@ -24,7 +24,7 @@ class Solution:
         return self.isBalanced(root.left) and self.isBalanced(root.right)
     
 # Time complexity : O(nlogn)
-# Space complexity
+# Space complexity : O(n). The recursion stack may contain all nodes if the tree is skewed.
 
 def main():
     # Create the tree [1, null, 2, null, 3]
